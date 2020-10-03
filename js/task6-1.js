@@ -103,6 +103,45 @@ const getUsersWithGender = (array, gender) =>
 console.log(getUsersWithGender(users, "male"));
 
 // task 6-4
-const getInactiveUsers = (array) => array;
+const getInactiveUsers = (array) => array.filter(({ isActive }) => !isActive);
 
 console.log(getInactiveUsers(users));
+
+// task 6-5
+const getUserWithEmail = (array, mail) =>
+  array.find(({ email }) => email === mail);
+
+console.log(getUserWithEmail(users, "rossvazquez@xinware.com"));
+console.log(getUserWithEmail(users, "blackburndotson@furnigeer.com"));
+
+// task 6-6
+const getUsersWithAge = (array, min, max) =>
+  array
+    .filter(({ age }) => age > min && age < max)
+    .map(({ name, email }) => ({ name, email }));
+
+console.log(getUsersWithAge(users, 20, 30));
+console.log(getUsersWithAge(users, 30, 40));
+
+// task 6-7
+const calculateTotalBalance = (array) =>
+  array.reduce((totalBalance, { balance }) => totalBalance + balance, 0);
+
+console.log(calculateTotalBalance(users));
+
+// task 6-7
+const getUsersWithFriend = (array, friendName) =>
+  array
+    .filter(({ friends }) => friends.includes(friendName))
+    .map(({ name }) => name);
+
+console.log(getUsersWithFriend(users, "Briana Decker"));
+console.log(getUsersWithFriend(users, "Goldie Gentry"));
+
+//task 6-8
+const getNamesSortedByFriendsCount = (array) =>
+  (array = [...array]
+    .sort(({ friends }) => (friends.length += 1))
+    .map(({ name }) => name));
+
+console.log(getNamesSortedByFriendsCount(users));
