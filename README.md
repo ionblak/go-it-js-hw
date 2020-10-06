@@ -1,1 +1,1 @@
-# go-it-js-hw
+# goit-js-hw-02
